@@ -20,9 +20,18 @@ def get_all_build_tools_versions():
         versions = []
         for path in xcode_paths:
             try:
-                # Extracting the version for each Xcode installation
-                version_output = subprocess.check_output(['/usr/libexec/PlistBuddy', '-c', 'Print CFBundleShortVersionString', f'{path}/Contents/Info.plist'], text=True)
-                versions.append((path, version_output.strip()))
+                # Extracting the version and build information for each Xcode installation
+                info_plist_path = f'{path}/Contents/Info.plist'
+                version_output = subprocess.check_output(['/usr/libexec/PlistBuddy', '-c', 'Print CFBundleShortVersionString', info_plist_path], text=True)
+                build_output = subprocess.check_output(['/usr/libexec/PlistBuddy', '-c', 'Print CFBundleVersion', info_plist_path], text=True)
+
+                version = version_output.strip()
+                build = build_output.strip()
+
+                # Check for beta indicators in version or build strings
+                is_beta = "beta" in version.lower() or re.search(r'[bB]\d+', build)
+
+                versions.append((path, version, is_beta))
             except subprocess.CalledProcessError:
                 continue
 

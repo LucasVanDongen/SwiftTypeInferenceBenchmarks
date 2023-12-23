@@ -5,26 +5,35 @@ import subprocess
 import xcode_versions
 
 code = {
-  # 'StringLiteral': 'let a{} = "hello, world!"',
-  # 'StringInitializer': 'let b{} = String("hello, world!")',
-  # 'StringBareInit': 'let c{}: String = .init("hello, world!")',
-  # 'StringTypedLiteral': 'let d{}: String = "hello, world!"',
-  # 'StringTypedBareInit': 'let e{}: String = String.init("hello, world!")',
-  # 'IntLiteral': 'let e{}: 1',
-  # 'IntInitializer': 'let e{}: Int.init(1)',
-  # 'IntBareInit': 'let e{}: Int = .init(1)',
-  # 'IntTypedLiteral': 'let e{}: Int = 1',
-  # 'IntTypedBareInit': 'let e{}: Int = Int.init(1)',
-#  'NestedBareInit': 'let base{}: Base = .init(nested1: .init(grand1: .init(), grand2: .init()), nested2: .init(grand: .init()))',
-#  'NestedExplicitInit': 'let base{} = Base(nested1: Nested1(grand1: GrandChild(), grand2: GrandChild()), nested2: Nested2(grand: GrandChild()))',
-  # 'LargeArrayUntyped': '',
-  # 'LargeArrayTyped': '',
-  # 'NestedDictionaryUntyped': '',
-  # 'NestedDictionaryTyped': '',
-  # 'LargeUntypedMixedArray': '',
-  # 'LargeTypedMixedArray': '',
-  'TypedComputedContainer': '',
-  'BareComputedContainer': ''
+#    'StringLiteral': ['StringLiteral.swift'],
+##    'StringInitializer': ['StringInitializer.swift'],
+##    'StringBareInit': ['StringBareInit.swift'],
+##    'StringTypedLiteral': ['StringTypedLiteral.swift'],
+##    'StringTypedBareInit': ['StringTypedBareInit.swift'],
+#    'IntLiteral': ['IntLiteral.swift'],
+##    'IntInitializer': ['IntInitializer.swift'],
+##    'IntBareInit': ['IntBareInit.swift'],
+##    'IntTypedLiteral': ['IntTypedLiteral.swift'],
+##    'IntTypedBareInit': ['IntTypedBareInit.swift'],
+#    'DecimalLiteral': ['DecimalLiteral.swift'],
+#    'NestedBareInit': ['Base.swift', 'NestedBareInit.swift'],
+#    'NestedExplicitInit': ['Base.swift', 'NestedExplicitInit.swift'],
+#    'NestedExplicitInitWithLeftHand': ['Base.swift', 'NestedExplicitInitWithLeftHand.swift'],
+#    'LargeArrayUntyped': ['LargeArrayUntyped.swift'],
+#    'LargeArrayTyped': ['LargeArrayTyped.swift'],
+#    'LargeInitArray': ['LargeInitArray.swift'],
+#    'LargeArrayRepeating': ['LargeArrayRepeating.swift'],
+#    'NestedDictionaryUntyped': ['NestedDictionaryUntyped.swift'],
+#    'NestedDictionaryTyped': ['NestedDictionaryTyped.swift'],
+#    'SimpleDictionaryUntyped': ['SimpleDictionaryUntyped.swift'],
+#    'SimpleDictionaryTyped': ['SimpleDictionaryTyped.swift'],
+#    'LargeUntypedMixedArray': ['LargeUntypedMixedArray.swift'],
+#    'LargeTypedMixedArray': ['LargeTypedMixedArray.swift'],
+##    'LargeInitMixedArray': ['LargeInitMixedArray.swift'],
+    'TypedComputedContainer': ['BookingData.swift', 'TypedComputedContainer.swift'],
+    'BareComputedContainer': ['BookingData.swift', 'BareComputedContainer.swift']#,
+#    'FunctionBareInit': ['FunctionData.swift', 'FunctionBareInit.swift'],
+#    'FunctionTypedInit': ['FunctionData.swift', 'FunctionTypedInit.swift']
 }
 
 def set_xcode_version(path):
@@ -34,31 +43,49 @@ def set_xcode_version(path):
         print(f"Failed to set Xcode version: {e}")
 
 def run_tests_on_all_versions():
-    for path, version in all_versions:
+    original_version = current_version  # Store the original version
+    for path, version, is_beta in all_versions:
         print(f"\nRunning tests on Xcode Build Tools version: {version}")
         set_xcode_version(path)
         run_tests()
         print(f"Finished tests on {version}")
 
+    # Restore the original Xcode version
+    if original_version:
+        original_path = next((path for path, version, _ in all_versions if version == original_version), None)
+        if original_path:
+            set_xcode_version(original_path)
+            print(f"\nRestored Xcode Build Tools version to: {original_version}")
+        else:
+            print("\nFailed to restore the original Xcode Build Tools version.")
+
 def run_tests():
-    for i, (key, file) in enumerate(code.items()):
-        filename = key + ".swift"
-        os.system("hyperfine 'xcrun swiftc  -disallow-use-new-driver -typecheck {}' --show-output --warmup 1".format(filename))
+    for i, (key, swift_files) in enumerate(code.items()):
+        # Joining all Swift file names in the list with spaces for the swiftc command
+        files_to_compile = ' '.join(swift_files)
+        command = "xcrun --kill-cache"
+        os.system(command)
+        command = f"hyperfine 'xcrun -n swiftc -typecheck {files_to_compile}' --show-output --warmup 1"
+        os.system(command)
 
 def choose_xcode_version():
+    # Sort the versions from old to new
+    sorted_versions = sorted(all_versions, key=lambda x: [int(part) for part in x[1].split('.')])
+
     print(f"\nEnter the number of the Xcode version you want to use, 'a' to test all versions, or press Enter to continue with the current version {current_version}:")
-    for i, (_, version) in enumerate(all_versions):
-        print(f"{i + 1}: {version}")
-    
-    choice = input("Enter your choice (1-{}, 'a' or Enter): ".format(len(all_versions))).strip().lower()
+    for i, (_, version, is_beta) in enumerate(sorted_versions):
+        beta = " (beta)" if is_beta else ""
+        print(f"{i + 1}: {version}{beta}")
+
+    choice = input("Enter your choice (1-{}, 'a' or Enter): ".format(len(sorted_versions))).strip().lower()
     if choice == 'a':
         run_tests_on_all_versions()
     elif choice:
         try:
             selected_index = int(choice) - 1
-            if 0 <= selected_index < len(all_versions):
-                print(f"\nRunning tests on Xcode Build Tools version: {all_versions[selected_index][1]}")
-                set_xcode_version(all_versions[selected_index][0])
+            if 0 <= selected_index < len(sorted_versions):
+                print(f"\nRunning tests on Xcode Build Tools version: {sorted_versions[selected_index][1]}")
+                set_xcode_version(sorted_versions[selected_index][0])
                 run_tests()
             else:
                 print("Invalid selection. No tests run.")
@@ -86,5 +113,5 @@ choose_xcode_version()
 
 # Restore the original Xcode version
 if current_version:
-    set_xcode_version([path for path, version in all_versions if version == current_version][0])
+    set_xcode_version([path for path, version, _ in all_versions if version == current_version][0])
     print(f"\nRestored Xcode Build Tools version to: {current_version}")

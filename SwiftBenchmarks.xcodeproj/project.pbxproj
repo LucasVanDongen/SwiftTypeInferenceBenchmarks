@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		A02D46562B319C060064912D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02D46552B319C060064912D /* main.swift */; };
+		A0E2FCCD2B3467A100E3DD18 /* LargeInitArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2FCCC2B3467A100E3DD18 /* LargeInitArray.swift */; };
+		A0E2FCCF2B346B6A00E3DD18 /* LargeArrayRepeating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2FCCE2B346B6A00E3DD18 /* LargeArrayRepeating.swift */; };
+		A0E2FCD12B34700900E3DD18 /* LargeInitMixedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2FCD02B34700900E3DD18 /* LargeInitMixedArray.swift */; };
+		A0E2FCD42B34A03C00E3DD18 /* SimpleDictionaryUntyped.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2FCD32B34A03C00E3DD18 /* SimpleDictionaryUntyped.swift */; };
+		A0E2FCD62B34F59C00E3DD18 /* DecimalLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2FCD52B34F59C00E3DD18 /* DecimalLiteral.swift */; };
+		A0E2FCD82B35C47B00E3DD18 /* NestedExplicitInitWithLeftHand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2FCD72B35C47B00E3DD18 /* NestedExplicitInitWithLeftHand.swift */; };
 		A0E6CF2D2B319C7E00C22972 /* LargeUntypedMixedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E6CF182B319C7D00C22972 /* LargeUntypedMixedArray.swift */; };
 		A0E6CF2E2B319C7E00C22972 /* NestedDictionaryUntyped.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E6CF192B319C7D00C22972 /* NestedDictionaryUntyped.swift */; };
 		A0E6CF2F2B319C7E00C22972 /* NestedExplicitInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E6CF1A2B319C7D00C22972 /* NestedExplicitInit.swift */; };
@@ -33,6 +39,7 @@
 		A0E6CF482B31A04A00C22972 /* SimpleDictionaryTyped.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E6CF472B31A04A00C22972 /* SimpleDictionaryTyped.swift */; };
 		A0E6CF4A2B31A42300C22972 /* BookingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E6CF492B31A42300C22972 /* BookingData.swift */; };
 		A0E6CF4C2B31A47500C22972 /* TypedComputedContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E6CF4B2B31A47500C22972 /* TypedComputedContainer.swift */; };
+		A0E6CF4E2B31AEDF00C22972 /* FunctionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E6CF4D2B31AEDF00C22972 /* FunctionData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -50,6 +57,13 @@
 /* Begin PBXFileReference section */
 		A02D46522B319C060064912D /* SwiftBenchmarks */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftBenchmarks; sourceTree = BUILT_PRODUCTS_DIR; };
 		A02D46552B319C060064912D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		A0E2FCCC2B3467A100E3DD18 /* LargeInitArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeInitArray.swift; sourceTree = "<group>"; };
+		A0E2FCCE2B346B6A00E3DD18 /* LargeArrayRepeating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeArrayRepeating.swift; sourceTree = "<group>"; };
+		A0E2FCD02B34700900E3DD18 /* LargeInitMixedArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LargeInitMixedArray.swift; sourceTree = "<group>"; };
+		A0E2FCD22B349FB600E3DD18 /* generate.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = generate.py; sourceTree = "<group>"; };
+		A0E2FCD32B34A03C00E3DD18 /* SimpleDictionaryUntyped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleDictionaryUntyped.swift; sourceTree = "<group>"; };
+		A0E2FCD52B34F59C00E3DD18 /* DecimalLiteral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecimalLiteral.swift; sourceTree = "<group>"; };
+		A0E2FCD72B35C47B00E3DD18 /* NestedExplicitInitWithLeftHand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NestedExplicitInitWithLeftHand.swift; sourceTree = "<group>"; };
 		A0E6CF182B319C7D00C22972 /* LargeUntypedMixedArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LargeUntypedMixedArray.swift; sourceTree = "<group>"; };
 		A0E6CF192B319C7D00C22972 /* NestedDictionaryUntyped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NestedDictionaryUntyped.swift; sourceTree = "<group>"; };
 		A0E6CF1A2B319C7D00C22972 /* NestedExplicitInit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NestedExplicitInit.swift; sourceTree = "<group>"; };
@@ -57,7 +71,6 @@
 		A0E6CF1C2B319C7D00C22972 /* IntBareInit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntBareInit.swift; sourceTree = "<group>"; };
 		A0E6CF1D2B319C7D00C22972 /* LargeArrayTyped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LargeArrayTyped.swift; sourceTree = "<group>"; };
 		A0E6CF1E2B319C7D00C22972 /* NestedDictionaryTyped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NestedDictionaryTyped.swift; sourceTree = "<group>"; };
-		A0E6CF1F2B319C7D00C22972 /* base_tests.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = base_tests.py; sourceTree = "<group>"; };
 		A0E6CF202B319C7D00C22972 /* StringTypedLiteral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTypedLiteral.swift; sourceTree = "<group>"; };
 		A0E6CF212B319C7D00C22972 /* IntTypedLiteral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntTypedLiteral.swift; sourceTree = "<group>"; };
 		A0E6CF222B319C7D00C22972 /* LargeArrayUntyped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LargeArrayUntyped.swift; sourceTree = "<group>"; };
@@ -78,6 +91,7 @@
 		A0E6CF472B31A04A00C22972 /* SimpleDictionaryTyped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDictionaryTyped.swift; sourceTree = "<group>"; };
 		A0E6CF492B31A42300C22972 /* BookingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingData.swift; sourceTree = "<group>"; };
 		A0E6CF4B2B31A47500C22972 /* TypedComputedContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypedComputedContainer.swift; sourceTree = "<group>"; };
+		A0E6CF4D2B31AEDF00C22972 /* FunctionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,21 +124,23 @@
 		A02D46542B319C060064912D /* SwiftBenchmarks */ = {
 			isa = PBXGroup;
 			children = (
-				A0E6CF1F2B319C7D00C22972 /* base_tests.py */,
 				A0E6CF242B319C7D00C22972 /* file_test.py */,
 				A0E6CF1C2B319C7D00C22972 /* IntBareInit.swift */,
 				A0E6CF292B319C7D00C22972 /* IntInitializer.swift */,
 				A0E6CF282B319C7D00C22972 /* IntLiteral.swift */,
+				A0E2FCD52B34F59C00E3DD18 /* DecimalLiteral.swift */,
 				A0E6CF262B319C7D00C22972 /* IntTypedBareInit.swift */,
 				A0E6CF212B319C7D00C22972 /* IntTypedLiteral.swift */,
 				A0E6CF1D2B319C7D00C22972 /* LargeArrayTyped.swift */,
 				A0E6CF222B319C7D00C22972 /* LargeArrayUntyped.swift */,
 				A0E6CF2B2B319C7D00C22972 /* LargeTypedMixedArray.swift */,
+				A0E2FCD02B34700900E3DD18 /* LargeInitMixedArray.swift */,
 				A0E6CF182B319C7D00C22972 /* LargeUntypedMixedArray.swift */,
 				A0E6CF2C2B319C7E00C22972 /* NestedBareInit.swift */,
 				A0E6CF1E2B319C7D00C22972 /* NestedDictionaryTyped.swift */,
 				A0E6CF192B319C7D00C22972 /* NestedDictionaryUntyped.swift */,
 				A0E6CF1A2B319C7D00C22972 /* NestedExplicitInit.swift */,
+				A0E2FCD72B35C47B00E3DD18 /* NestedExplicitInitWithLeftHand.swift */,
 				A0E6CF272B319C7D00C22972 /* StringBareInit.swift */,
 				A0E6CF252B319C7D00C22972 /* StringInitializer.swift */,
 				A0E6CF1B2B319C7D00C22972 /* StringLiteral.swift */,
@@ -137,8 +153,13 @@
 				A0E6CF432B319CD900C22972 /* BareComputedContainer.swift */,
 				A0E6CF452B319F3300C22972 /* Base.swift */,
 				A0E6CF472B31A04A00C22972 /* SimpleDictionaryTyped.swift */,
+				A0E2FCD32B34A03C00E3DD18 /* SimpleDictionaryUntyped.swift */,
 				A0E6CF492B31A42300C22972 /* BookingData.swift */,
 				A0E6CF4B2B31A47500C22972 /* TypedComputedContainer.swift */,
+				A0E6CF4D2B31AEDF00C22972 /* FunctionData.swift */,
+				A0E2FCCC2B3467A100E3DD18 /* LargeInitArray.swift */,
+				A0E2FCCE2B346B6A00E3DD18 /* LargeArrayRepeating.swift */,
+				A0E2FCD22B349FB600E3DD18 /* generate.py */,
 			);
 			path = SwiftBenchmarks;
 			sourceTree = "<group>";
@@ -202,18 +223,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0E6CF4A2B31A42300C22972 /* BookingData.swift in Sources */,
+				A0E2FCCD2B3467A100E3DD18 /* LargeInitArray.swift in Sources */,
 				A0E6CF2F2B319C7E00C22972 /* NestedExplicitInit.swift in Sources */,
 				A0E6CF3A2B319C7E00C22972 /* IntLiteral.swift in Sources */,
+				A0E2FCCF2B346B6A00E3DD18 /* LargeArrayRepeating.swift in Sources */,
 				A0E6CF312B319C7E00C22972 /* IntBareInit.swift in Sources */,
 				A0E6CF382B319C7E00C22972 /* IntTypedBareInit.swift in Sources */,
 				A0E6CF342B319C7E00C22972 /* StringTypedLiteral.swift in Sources */,
 				A0E6CF402B319C9D00C22972 /* FunctionBareInit.swift in Sources */,
 				A0E6CF362B319C7E00C22972 /* LargeArrayUntyped.swift in Sources */,
+				A0E2FCD82B35C47B00E3DD18 /* NestedExplicitInitWithLeftHand.swift in Sources */,
 				A02D46562B319C060064912D /* main.swift in Sources */,
+				A0E2FCD62B34F59C00E3DD18 /* DecimalLiteral.swift in Sources */,
 				A0E6CF372B319C7E00C22972 /* StringInitializer.swift in Sources */,
 				A0E6CF3D2B319C7E00C22972 /* LargeTypedMixedArray.swift in Sources */,
+				A0E2FCD12B34700900E3DD18 /* LargeInitMixedArray.swift in Sources */,
 				A0E6CF352B319C7E00C22972 /* IntTypedLiteral.swift in Sources */,
 				A0E6CF392B319C7E00C22972 /* StringBareInit.swift in Sources */,
+				A0E2FCD42B34A03C00E3DD18 /* SimpleDictionaryUntyped.swift in Sources */,
 				A0E6CF2E2B319C7E00C22972 /* NestedDictionaryUntyped.swift in Sources */,
 				A0E6CF322B319C7E00C22972 /* LargeArrayTyped.swift in Sources */,
 				A0E6CF442B319CD900C22972 /* BareComputedContainer.swift in Sources */,
@@ -225,6 +252,7 @@
 				A0E6CF482B31A04A00C22972 /* SimpleDictionaryTyped.swift in Sources */,
 				A0E6CF2D2B319C7E00C22972 /* LargeUntypedMixedArray.swift in Sources */,
 				A0E6CF4C2B31A47500C22972 /* TypedComputedContainer.swift in Sources */,
+				A0E6CF4E2B31AEDF00C22972 /* FunctionData.swift in Sources */,
 				A0E6CF3B2B319C7E00C22972 /* IntInitializer.swift in Sources */,
 				A0E6CF302B319C7E00C22972 /* StringLiteral.swift in Sources */,
 			);
