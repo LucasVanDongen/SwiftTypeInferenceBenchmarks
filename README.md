@@ -27,3 +27,15 @@ First set up all of tools necessary to run the benchmarks:
 
 ## How to run the benchmarks
 Run `python3 file_test.py` in the Terminal from the `SwiftBenchmarks` folder.
+
+Warning: `BareComputedContainer` can run very slow on your computer. If want to exluded it just edit `file_test.py` in any text editor and excluded it as follows:
+
+```python
+    ...
+    'LargeTypedMixedArray': ['LargeTypedMixedArray.swift'],
+    'LargeInitMixedArray': ['LargeInitMixedArray.swift'],
+    'TypedComputedContainer': ['BookingData.swift', 'TypedComputedContainer.swift'],
+   # 'BareComputedContainer': ['BookingData.swift', 'BareComputedContainer.swift']#,
+    'FunctionBareInit': ['FunctionData.swift', 'FunctionBareInit.swift'],
+    'FunctionTypedInit': ['FunctionData.swift', 'FunctionTypedInit.swift']
+}
