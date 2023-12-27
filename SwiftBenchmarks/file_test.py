@@ -23,6 +23,8 @@ code = {
     'LargeArrayTyped': ['LargeArrayTyped.swift'],
     'LargeInitArray': ['LargeInitArray.swift'],
     'LargeArrayRepeating': ['LargeArrayRepeating.swift'],
+    'NestedArrayUntyped': ['NestedArrayUntyped.swift'],
+    'NestedArrayTyped.swift': ['NestedArrayTyped.swift'],
     'NestedDictionaryUntyped': ['NestedDictionaryUntyped.swift'],
     'NestedDictionaryTyped': ['NestedDictionaryTyped.swift'],
     'SimpleDictionaryUntyped': ['SimpleDictionaryUntyped.swift'],
@@ -31,7 +33,7 @@ code = {
     'LargeTypedMixedArray': ['LargeTypedMixedArray.swift'],
     'LargeInitMixedArray': ['LargeInitMixedArray.swift'],
     'TypedComputedContainer': ['BookingData.swift', 'TypedComputedContainer.swift'],
-    'BareComputedContainer': ['BookingData.swift', 'BareComputedContainer.swift']#,
+    'BareComputedContainer': ['BookingData.swift', 'BareComputedContainer.swift'],
     'FunctionBareInit': ['FunctionData.swift', 'FunctionBareInit.swift'],
     'FunctionTypedInit': ['FunctionData.swift', 'FunctionTypedInit.swift']
 }

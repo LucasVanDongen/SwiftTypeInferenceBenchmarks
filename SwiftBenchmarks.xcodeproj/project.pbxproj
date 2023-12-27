@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A01D5D0E2B3B687400D91284 /* NestedArrayUntyped.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01D5D0D2B3B687400D91284 /* NestedArrayUntyped.swift */; };
+		A01D5D102B3B688300D91284 /* NestedArrayTyped.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01D5D0F2B3B688300D91284 /* NestedArrayTyped.swift */; };
 		A02D46562B319C060064912D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02D46552B319C060064912D /* main.swift */; };
 		A0E2FCCD2B3467A100E3DD18 /* LargeInitArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2FCCC2B3467A100E3DD18 /* LargeInitArray.swift */; };
 		A0E2FCCF2B346B6A00E3DD18 /* LargeArrayRepeating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2FCCE2B346B6A00E3DD18 /* LargeArrayRepeating.swift */; };
@@ -55,6 +57,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A01D5D0D2B3B687400D91284 /* NestedArrayUntyped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NestedArrayUntyped.swift; sourceTree = "<group>"; };
+		A01D5D0F2B3B688300D91284 /* NestedArrayTyped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NestedArrayTyped.swift; sourceTree = "<group>"; };
 		A02D46522B319C060064912D /* SwiftBenchmarks */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftBenchmarks; sourceTree = BUILT_PRODUCTS_DIR; };
 		A02D46552B319C060064912D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		A0E2FCCC2B3467A100E3DD18 /* LargeInitArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeInitArray.swift; sourceTree = "<group>"; };
@@ -139,6 +143,8 @@
 				A0E6CF2C2B319C7E00C22972 /* NestedBareInit.swift */,
 				A0E6CF1E2B319C7D00C22972 /* NestedDictionaryTyped.swift */,
 				A0E6CF192B319C7D00C22972 /* NestedDictionaryUntyped.swift */,
+				A01D5D0F2B3B688300D91284 /* NestedArrayTyped.swift */,
+				A01D5D0D2B3B687400D91284 /* NestedArrayUntyped.swift */,
 				A0E6CF1A2B319C7D00C22972 /* NestedExplicitInit.swift */,
 				A0E2FCD72B35C47B00E3DD18 /* NestedExplicitInitWithLeftHand.swift */,
 				A0E6CF272B319C7D00C22972 /* StringBareInit.swift */,
@@ -246,9 +252,11 @@
 				A0E6CF442B319CD900C22972 /* BareComputedContainer.swift in Sources */,
 				A0E6CF3C2B319C7E00C22972 /* StringTypedBareInit.swift in Sources */,
 				A0E6CF422B319CAC00C22972 /* FunctionTypedInit.swift in Sources */,
+				A01D5D0E2B3B687400D91284 /* NestedArrayUntyped.swift in Sources */,
 				A0E6CF332B319C7E00C22972 /* NestedDictionaryTyped.swift in Sources */,
 				A0E6CF3E2B319C7E00C22972 /* NestedBareInit.swift in Sources */,
 				A0E6CF462B319F3300C22972 /* Base.swift in Sources */,
+				A01D5D102B3B688300D91284 /* NestedArrayTyped.swift in Sources */,
 				A0E6CF482B31A04A00C22972 /* SimpleDictionaryTyped.swift in Sources */,
 				A0E6CF2D2B319C7E00C22972 /* LargeUntypedMixedArray.swift in Sources */,
 				A0E6CF4C2B31A47500C22972 /* TypedComputedContainer.swift in Sources */,
