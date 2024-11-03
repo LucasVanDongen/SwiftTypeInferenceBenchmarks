@@ -5,37 +5,59 @@ import subprocess
 import xcode_versions
 
 code = {
-    'StringLiteral': ['StringLiteral.swift'],
-    'StringInitializer': ['StringInitializer.swift'],
-    'StringBareInit': ['StringBareInit.swift'],
-    'StringTypedLiteral': ['StringTypedLiteral.swift'],
-    'StringTypedBareInit': ['StringTypedBareInit.swift'],
-    'IntLiteral': ['IntLiteral.swift'],
-    'IntInitializer': ['IntInitializer.swift'],
-    'IntBareInit': ['IntBareInit.swift'],
-    'IntTypedLiteral': ['IntTypedLiteral.swift'],
-    'IntTypedBareInit': ['IntTypedBareInit.swift'],
-    'DecimalLiteral': ['DecimalLiteral.swift'],
-    'NestedBareInit': ['Base.swift', 'NestedBareInit.swift'],
-    'NestedExplicitInit': ['Base.swift', 'NestedExplicitInit.swift'],
-    'NestedExplicitInitWithLeftHand': ['Base.swift', 'NestedExplicitInitWithLeftHand.swift'],
-    'LargeArrayUntyped': ['LargeArrayUntyped.swift'],
-    'LargeArrayTyped': ['LargeArrayTyped.swift'],
-    'LargeInitArray': ['LargeInitArray.swift'],
-    'LargeArrayRepeating': ['LargeArrayRepeating.swift'],
-    'NestedArrayUntyped': ['NestedArrayUntyped.swift'],
-    'NestedArrayTyped.swift': ['NestedArrayTyped.swift'],
-    'NestedDictionaryUntyped': ['NestedDictionaryUntyped.swift'],
-    'NestedDictionaryTyped': ['NestedDictionaryTyped.swift'],
-    'SimpleDictionaryUntyped': ['SimpleDictionaryUntyped.swift'],
-    'SimpleDictionaryTyped': ['SimpleDictionaryTyped.swift'],
-    'LargeUntypedMixedArray': ['LargeUntypedMixedArray.swift'],
-    'LargeTypedMixedArray': ['LargeTypedMixedArray.swift'],
-    'LargeInitMixedArray': ['LargeInitMixedArray.swift'],
-    'TypedComputedContainer': ['BookingData.swift', 'TypedComputedContainer.swift'],
-    'BareComputedContainer': ['BookingData.swift', 'BareComputedContainer.swift'],
-    'FunctionBareInit': ['FunctionData.swift', 'FunctionBareInit.swift'],
-    'FunctionTypedInit': ['FunctionData.swift', 'FunctionTypedInit.swift']
+    'String': {
+        'StringLiteral': ['StringLiteral.swift'],
+        'StringInitializer': ['StringInitializer.swift'],
+        'StringBareInit': ['StringBareInit.swift'],
+        'StringTypedLiteral': ['StringTypedLiteral.swift'],
+        'StringTypedBareInit': ['StringTypedBareInit.swift']
+    },
+    'Int': {
+        'IntLiteral': ['IntLiteral.swift'],
+        'IntInitializer': ['IntInitializer.swift'],
+        'IntBareInit': ['IntBareInit.swift'],
+        'IntTypedLiteral': ['IntTypedLiteral.swift'],
+        'IntTypedBareInit': ['IntTypedBareInit.swift']
+    },
+    'Decimal': {
+        'DecimalLiteral': ['DecimalLiteral.swift']
+    },
+    'Nested': {
+        'NestedBareInit': ['Base.swift', 'NestedBareInit.swift'],
+        'NestedExplicitInit': ['Base.swift', 'NestedExplicitInit.swift'],
+        'NestedExplicitInitWithLeftHand': ['Base.swift', 'NestedExplicitInitWithLeftHand.swift']
+    },
+    'LargeArray': {
+        'LargeArrayUntyped': ['LargeArrayUntyped.swift'],
+        'LargeArrayTyped': ['LargeArrayTyped.swift'],
+        'LargeInitArray': ['LargeInitArray.swift'],
+        'LargeArrayRepeating': ['LargeArrayRepeating.swift']
+    },
+    'NestedArray': {
+        'NestedArrayUntyped': ['NestedArrayUntyped.swift'],
+        'NestedArrayTyped.swift': ['NestedArrayTyped.swift']
+    },
+    'NestedDictionary': {
+        'NestedDictionaryUntyped': ['NestedDictionaryUntyped.swift'],
+        'NestedDictionaryTyped': ['NestedDictionaryTyped.swift']
+    },
+    'SimpleDictionary': {
+        'SimpleDictionaryUntyped': ['SimpleDictionaryUntyped.swift'],
+        'SimpleDictionaryTyped': ['SimpleDictionaryTyped.swift']
+    },
+    'LargeMixedArray': {
+        'LargeUntypedMixedArray': ['LargeUntypedMixedArray.swift'],
+        'LargeTypedMixedArray': ['LargeTypedMixedArray.swift'],
+        'LargeInitMixedArray': ['LargeInitMixedArray.swift']
+    },
+    'ComputedContainer': {
+        'TypedComputedContainer': ['BookingData.swift', 'TypedComputedContainer.swift'],
+        'BareComputedContainer': ['BookingData.swift', 'BareComputedContainer.swift']
+    },
+    'FunctionInit': {
+        'FunctionBareInit': ['FunctionData.swift', 'FunctionBareInit.swift'],
+        'FunctionTypedInit': ['FunctionData.swift', 'FunctionTypedInit.swift']
+    }
 }
 
 def set_xcode_version(path):
@@ -62,12 +84,16 @@ def run_tests_on_all_versions():
             print("\nFailed to restore the original Xcode Build Tools version.")
 
 def run_tests():
-    for i, (key, swift_files) in enumerate(code.items()):
-        # Joining all Swift file names in the list with spaces for the swiftc command
-        files_to_compile = ' '.join(swift_files)
-        command = "xcrun --kill-cache"
-        os.system(command)
-        command = f"hyperfine 'xcrun -n swiftc -typecheck {files_to_compile}' --show-output --warmup 1"
+    for group in code.values():
+        commands = []
+
+        for (key, swift_files) in group.items():
+            # Joining all Swift file names in the list with spaces for the swiftc command
+            files_to_compile = ' '.join(swift_files)
+            commands.append(f"--command-name '{key}' 'xcrun -n swiftc -typecheck {files_to_compile}'")
+        
+        commands = ' '.join(commands)
+        command = f"hyperfine --setup 'xcrun --kill-cache' --show-output --warmup 1 {commands}"
         os.system(command)
 
 def choose_xcode_version():
